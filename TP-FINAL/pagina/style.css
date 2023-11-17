@@ -1,0 +1,127 @@
+body {
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  background-color: #f7f7f7;
+  color: #333;
+  background: linear-gradient(to bottom right, #bdc3c7, #eaeaea);
+}
+
+h1 {
+  text-align: center;
+  padding: 20px 0;
+  background-color: #2c3e50;
+  color: white;
+}
+
+.cantantes-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+
+
+
+.cantante {
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  transition: transform 0.3s ease-in-out;
+}
+
+.cantante:hover {
+  transform: translateY(-5px);
+}
+body .cantantes-container .cantante.eliminar {
+  border-radius: 50%;
+  background-color: rgba(153, 24, 24, 0.233);
+  color: black;
+  height: 30px;
+  width: 30px;
+  padding: auto;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+thead {
+  background-color: #2c3e50;
+  color: white;
+}
+
+td,
+th {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+td:first-child {
+  font-weight: bold;
+  background-color: #f0f0f0;
+}
+
+
+/*Estilo para agregar canantes*/
+
+#mostrarFormulario {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #2c3e50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#mostrarFormulario:hover {
+  background-color: #34495e;
+}
+
+
+#formularioAgregar {
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  margin: 20px auto;
+  max-width: 400px;
+  display: none;
+}
+
+#formularioAgregar h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#formularioAgregar label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+#formularioAgregar input[type="text"],
+#formularioAgregar input[type="date"],
+#formularioAgregar input[type="submit"] {
+  width: calc(100% - 12px);
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#formularioAgregar input[type="submit"] {
+  background-color: #2c3e50;
+  color: white;
+  cursor: pointer;
+}
+
+#formularioAgregar input[type="submit"]:hover {
+  background-color: #34495e;
+}
