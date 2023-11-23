@@ -37,6 +37,17 @@ h1 {
 .cantante:hover {
   transform: translateY(-5px);
 }
+
+.cantante .btn_eliminar {
+  margin-bottom: 5px;
+  cursor: pointer;
+  transition: all .2s ease-in-out;
+}
+
+.cantante .btn_eliminar:hover {
+  background-color: rgb(228, 227, 227);
+}
+
 body .cantantes-container .cantante.eliminar {
   border-radius: 50%;
   background-color: rgba(153, 24, 24, 0.233);
@@ -45,6 +56,7 @@ body .cantantes-container .cantante.eliminar {
   width: 30px;
   padding: auto;
 }
+
 table {
   border-collapse: collapse;
   width: 100%;

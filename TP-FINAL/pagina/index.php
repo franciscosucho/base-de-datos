@@ -18,7 +18,9 @@
 
     while ($cantante = $sentencia->fetch(PDO::FETCH_ASSOC)) {
       echo '<div class="cantante">';
-      echo ('<button type="submit" name="btn_borrar"  value="'. $cantante['id_cantante'] .'"> X </button> ');
+      echo '<form method="post" action="">'; // Agregar el formulario
+      echo ('<button type="submit" name="btn_borrar" class="btn_eliminar" value='. $cantante['id_cantante'] .'>X</button>');
+      echo '</form>'; // Cerrar el formulario
       echo '<table>';
       echo '<thead>';
       echo '<tr>';
@@ -42,16 +44,26 @@
       echo '</table>';
       echo '</div>'; 
     }
-   
     if (isset($_POST['btn_borrar'])){ 
-      $btn_eliminar= $_POST['btn_borrar']; 
-      $sentencia = $conexion->prepare($sql);
-      $delete="DELETE FROM cantantes WHERE  id_cantante=".'$btn_eliminar'." "; 
-      $sentencia = $conexion->prepare($delete);
-      $sentencia->execute();
-     
+      $btn_eliminar= $_POST['btn_borrar'];
+      
+      // Verificar la conexión a la base de datos
+      if ($conexion) {
+        // Eliminar las filas secundarias en la tabla cantantes_canciones
+        $delete_canciones = "DELETE FROM cantantes_canciones WHERE id_cantante = :id";
+        $sentencia_canciones = $conexion->prepare($delete_canciones);
+        $sentencia_canciones->bindParam(':id', $btn_eliminar, PDO::PARAM_INT);
+        $sentencia_canciones->execute();
+    
+        // Eliminar la fila principal en la tabla cantantes
+        $delete_cantante = "DELETE FROM cantantes WHERE id_cantante = :id";
+        $sentencia_cantante = $conexion->prepare($delete_cantante);
+        $sentencia_cantante->bindParam(':id', $btn_eliminar, PDO::PARAM_INT);
+        $sentencia_cantante->execute();
+      } else {
+        echo "Error de conexión a la base de datos";
+      }
     }
-    $conexion = null;
     ?>
   </div> 
 
